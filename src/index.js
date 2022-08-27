@@ -1,17 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import {createElement,render,useState} from './sreact'
+import './index.css'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+/** @jsx createElement */
+function Counter() {
+  
+  const [state, setState] = useState(0)
+  const [state2, setState2] = useState(2)
+
+  return (
+    <div>
+      <h1 onClick={() => setState(c => c + 1)} style="user-select: none">
+      Count: {state}
+    </h1>
+    <h1 onClick={() => setState2(c => c + 2)} style="user-select: none">
+      Count2: {state2}
+    </h1>
+    </div>
+  )
+}
+const element = <Counter />
+const container = document.getElementById("root")
+render(element, container)
